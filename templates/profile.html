@@ -1,0 +1,66 @@
+{% extends "base.html" %} {% block title %} Profile {% endblock title %} {% block head %}
+
+<h2 style="color:white ;font-family:Georgia, 'Times New Roman', Times, serif;font-size: medium;"><big>Enrollment details</big></h2>
+
+<!-- <div class="container mt-2">
+
+    <div class="row"> -->
+
+<div>
+
+
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissable fade show" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    <div style="font-family:Georgia, 'Times New Roman', Times, serif;">
+        {%for post in posts%}
+        <ul class="list-group">
+            <li class="list-group-item bg-dark text-white">
+                Name:{{post.FullName}}
+            </li>
+            <li class="list-group-item bg-dark text-white">
+                Email:{{post.Email}}
+            </li>
+            <li class="list-group-item bg-dark text-white">
+                Gender:{{post.Gender}}
+            </li>
+            <li class="list-group-item bg-dark text-white">
+                PhoneNumber:{{post.PhoneNumber}}
+            </li>
+            <li class="list-group-item bg-dark text-white">
+                Date Of Birth:{{post.DOB}}
+            </li>
+            <li class="list-group-item bg-dark text-white">
+                Subscription:{{post.SelectMembershipplan}}
+            </li>
+            <li class="list-group-item bg-dark text-white">
+                Trainer:{{post.SelectTrainer}}
+            </li>
+            <li class="list-group-item bg-dark text-white">
+                Address:{{post.Address}}
+            </li>
+            <li class="list-group-item bg-dark text-white">
+                Payment Status:{{post.paymentStatus}}
+            </li>
+            <li class="list-group-item bg-dark text-white">
+                Amount Paid:{{post.Price}}
+            </li>
+            <li class="list-group-item bg-dark text-white">
+                Joining Date:{{post.timeStamp}}
+            </li>
+            <li class="list-group-item bg-dark text-white">
+                Due Date:{{post.DueDate}}
+            </li>
+
+
+        </ul>
+        {% endfor%}
+    </div>
+</div>
+<div class="col-md-3"></div>
+
+
+{% endblock head %}

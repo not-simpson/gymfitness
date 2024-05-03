@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block title %} Sign Up {% endblock title %} {% block head %}
+
+<h2 style="color:rgba(139, 66, 23, 0.952) ;font-family:Georgia, 'Times New Roman', Times, serif; font-size: medium;"><big>Sign Up Here</big></h2><br> {% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissable fade show" role="alert">
+    <strong></strong>{{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+
+
+<div style="background-color:rgba(39, 24, 3, 0.904);box-sizing:border-box;width: 500px;padding: 10px; color: whitesmoke;font-family:Georgia, 'Times New Roman', Times, serif;">
+    <form action="/signup" method="post">{% csrf_token %}
+        <div class="mb-3">
+            <input type="text" class="form-control" name="username" placeholder="Username" required>
+        </div>
+        <div class="mb-3">
+            <input type="email" class="form-control" name="email" placeholder="Email" required>
+        </div>
+        <div class="mb-3">
+            <input type="password" class="form-control" name="pass1" placeholder="Password" required>
+        </div>
+        <div class="mb-3">
+            <input type="password" class="form-control" name="pass2" placeholder="Confirm Password" required>
+            <div id="passwordHelp" class="form-text">We'll never share your details with anyone else.</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <br><a href="/login">Already a user?</a>
+</div>
+{% endblock head %}

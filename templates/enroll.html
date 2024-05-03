@@ -1,0 +1,83 @@
+{% extends "base.html" %} {% block title %} Enrollment for gym{% endblock title %} {% block head %}
+
+<h2 style="color:rgba(139, 66, 23, 0.952) ;font-family:Georgia, 'Times New Roman', Times, serif;font-size: medium;"><big>Join Us today</big></h2>
+
+<!-- <div class="container mt-2">
+
+    <div class="row"> -->
+
+
+<div>
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissable fade show" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    <div style="background-color:rgba(39, 24, 3, 0.904);box-sizing:border-box;width: 500px;padding: 10px; color: whitesmoke;font-family:Georgia, 'Times New Roman', Times, serif;">
+
+
+        <form action="/join" method="post">{% csrf_token %}
+
+            <div class="form-group">
+                <input type="text" name="FullName" value="{{user.username}}" class="form-control" placeholder="Your Full Name" readonly required>
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="email" class="form-control" value="{{user.email}}" name="email" placeholder="Your Email" readonly required>
+            </div>
+            <br>
+            <div class="form-group">
+                <select class="form-control " id="gender" name="gender" required>
+<option selected>Select Gender</option>
+<option value="Male">Male</option>
+<option value="Female">Female</option>
+
+</select>
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="tel" class="form-control" name="PhoneNumber" placeholder="Phone Number" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="date" class="form-control" name="DOB" placeholder="Date of Birth" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <select class="form-control " id="member" name="member" required>
+                            <option selected>Select Membership Plan</option>
+                                {% for p in Membership %}
+
+<option value="{{p.plan}} ~ {{p.price}}">{{p.plan}} ~ {{p.price}} Naira</option>
+{% endfor %}                                
+                        </select>
+            </div>
+            <br>
+            <div class="form-group">
+                <select class="form-control " id="trainer" name="trainer" required>
+                            <option selected>Select Trainer</option>
+                                {% for p in SelectTrainer %}
+
+<option value="{{p.name}}">{{p.name}}</option>
+{% endfor %}         
+
+                        </select>
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="text" class="form-control" name="address" placeholder="Address">
+            </div>
+            <br>
+            <div class="text-center"><button class="btn btn-warning" type="submit">Enroll</button></div>
+        </form>
+    </div>
+</div>
+
+<div class="col-md-3"></div>
+
+<!-- </div>
+
+</div> -->
+
+{% endblock head %}
